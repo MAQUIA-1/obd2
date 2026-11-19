@@ -1,0 +1,446 @@
+{
+  "checked_at": "2026-11-19",
+  "note": "Public snapshots; no vehicle validation; inspect individual licenses before redistribution.",
+  "files": [
+    {
+      "repo": "commaai/opendbc",
+      "commit": "79ddcc7bb72d557fc5b20d038c0fad9c9d423446",
+      "license": "MIT",
+      "path": "opendbc/dbc/generator/hyundai/_hyundai_canfd_common.dbc",
+      "local": "sources/commaai/opendbc/opendbc/dbc/generator/hyundai/_hyundai_canfd_common.dbc",
+      "url": "https://raw.githubusercontent.com/commaai/opendbc/79ddcc7bb72d557fc5b20d038c0fad9c9d423446/opendbc/dbc/generator/hyundai/_hyundai_canfd_common.dbc",
+      "sha256": "f2366b5485208e17ce878f9a4b68e5a3100f45da156bb1fbed20897ae8b87200",
+      "bytes": 10081
+    },
+    {
+      "repo": "commaai/opendbc",
+      "commit": "79ddcc7bb72d557fc5b20d038c0fad9c9d423446",
+      "license": "MIT",
+      "path": "opendbc/dbc/generator/hyundai/hyundai_can.dbc",
+      "local": "sources/commaai/opendbc/opendbc/dbc/generator/hyundai/hyundai_can.dbc",
+      "url": "https://raw.githubusercontent.com/commaai/opendbc/79ddcc7bb72d557fc5b20d038c0fad9c9d423446/opendbc/dbc/generator/hyundai/hyundai_can.dbc",
+      "sha256": "a3fb6e98bfdc0041914643f1422b1bb9290462981c40249a05cd7773e71a8bc3",
+      "bytes": 93512
+    },
+    {
+      "repo": "commaai/opendbc",
+      "commit": "79ddcc7bb72d557fc5b20d038c0fad9c9d423446",
+      "license": "MIT",
+      "path": "opendbc/dbc/generator/hyundai/hyundai_canfd.dbc",
+      "local": "sources/commaai/opendbc/opendbc/dbc/generator/hyundai/hyundai_canfd.dbc",
+      "url": "https://raw.githubusercontent.com/commaai/opendbc/79ddcc7bb72d557fc5b20d038c0fad9c9d423446/opendbc/dbc/generator/hyundai/hyundai_canfd.dbc",
+      "sha256": "1f1bd5d9a65ba2b92818bbebcf51ff22adc6ca4a59dd7ef780c217dc94223faa",
+      "bytes": 99751
+    },
+    {
+      "repo": "commaai/opendbc",
+      "commit": "79ddcc7bb72d557fc5b20d038c0fad9c9d423446",
+      "license": "MIT",
+      "path": "opendbc/dbc/generator/hyundai/hyundai_palisade_2023.dbc",
+      "local": "sources/commaai/opendbc/opendbc/dbc/generator/hyundai/hyundai_palisade_2023.dbc",
+      "url": "https://raw.githubusercontent.com/commaai/opendbc/79ddcc7bb72d557fc5b20d038c0fad9c9d423446/opendbc/dbc/generator/hyundai/hyundai_palisade_2023.dbc",
+      "sha256": "a15e088f1664ab608f4a2a3eec1ad31784f7218add958efe741135ccb218c543",
+      "bytes": 38092
+    },
+    {
+      "repo": "commaai/opendbc",
+      "commit": "79ddcc7bb72d557fc5b20d038c0fad9c9d423446",
+      "license": "MIT",
+      "path": "opendbc/dbc/hyundai_2015_ccan.dbc",
+      "local": "sources/commaai/opendbc/opendbc/dbc/hyundai_2015_ccan.dbc",
+      "url": "https://raw.githubusercontent.com/commaai/opendbc/79ddcc7bb72d557fc5b20d038c0fad9c9d423446/opendbc/dbc/hyundai_2015_ccan.dbc",
+      "sha256": "d7f822e3a8d220cfde83aec2ae4ed28ddbc44a38ff29bea2e12e3e321d73a607",
+      "bytes": 81687
+    },
+    {
+      "repo": "commaai/opendbc",
+      "commit": "79ddcc7bb72d557fc5b20d038c0fad9c9d423446",
+      "license": "MIT",
+      "path": "opendbc/dbc/hyundai_2015_mcan.dbc",
+      "local": "sources/commaai/opendbc/opendbc/dbc/hyundai_2015_mcan.dbc",
+      "url": "https://raw.githubusercontent.com/commaai/opendbc/79ddcc7bb72d557fc5b20d038c0fad9c9d423446/opendbc/dbc/hyundai_2015_mcan.dbc",
+      "sha256": "b18e69bdd30e53fe689b23fbd59779095249a1bb5b2391435e814a490fa924e4",
+      "bytes": 77667
+    },
+    {
+      "repo": "commaai/opendbc",
+      "commit": "79ddcc7bb72d557fc5b20d038c0fad9c9d423446",
+      "license": "MIT",
+      "path": "opendbc/dbc/hyundai_i30_2014.dbc",
+      "local": "sources/commaai/opendbc/opendbc/dbc/hyundai_i30_2014.dbc",
+      "url": "https://raw.githubusercontent.com/commaai/opendbc/79ddcc7bb72d557fc5b20d038c0fad9c9d423446/opendbc/dbc/hyundai_i30_2014.dbc",
+      "sha256": "12130a0e82f04f5bdc237fb4d9727792256e1f017b5f7fae23594eb1d0ffad16",
+      "bytes": 23391
+    },
+    {
+      "repo": "commaai/opendbc",
+      "commit": "79ddcc7bb72d557fc5b20d038c0fad9c9d423446",
+      "license": "MIT",
+      "path": "opendbc/dbc/hyundai_santafe_2007.dbc",
+      "local": "sources/commaai/opendbc/opendbc/dbc/hyundai_santafe_2007.dbc",
+      "url": "https://raw.githubusercontent.com/commaai/opendbc/79ddcc7bb72d557fc5b20d038c0fad9c9d423446/opendbc/dbc/hyundai_santafe_2007.dbc",
+      "sha256": "98dab8afe58b1816b3b5464318437bf9486f00f22a4f0d506f0395a29cb3bc03",
+      "bytes": 3823
+    },
+    {
+      "repo": "commaai/opendbc",
+      "commit": "79ddcc7bb72d557fc5b20d038c0fad9c9d423446",
+      "license": "MIT",
+      "path": "opendbc/car/hyundai/carstate.py",
+      "local": "sources/commaai/opendbc/opendbc/car/hyundai/carstate.py",
+      "url": "https://raw.githubusercontent.com/commaai/opendbc/79ddcc7bb72d557fc5b20d038c0fad9c9d423446/opendbc/car/hyundai/carstate.py",
+      "sha256": "93a38cce4b1d98fe6454bf4492eb7f6dde7369d827488899cbbced51d769b25e",
+      "bytes": 16288
+    },
+    {
+      "repo": "commaai/opendbc",
+      "commit": "79ddcc7bb72d557fc5b20d038c0fad9c9d423446",
+      "license": "MIT",
+      "path": "opendbc/car/hyundai/values.py",
+      "local": "sources/commaai/opendbc/opendbc/car/hyundai/values.py",
+      "url": "https://raw.githubusercontent.com/commaai/opendbc/79ddcc7bb72d557fc5b20d038c0fad9c9d423446/opendbc/car/hyundai/values.py",
+      "sha256": "13e6694886f6945952fd18b69f6d79785da61636d9448a9ef538af84b031347c",
+      "bytes": 38432
+    },
+    {
+      "repo": "commaai/opendbc",
+      "commit": "79ddcc7bb72d557fc5b20d038c0fad9c9d423446",
+      "license": "MIT",
+      "path": "LICENSE",
+      "local": "sources/commaai/opendbc/LICENSE",
+      "url": "https://raw.githubusercontent.com/commaai/opendbc/79ddcc7bb72d557fc5b20d038c0fad9c9d423446/LICENSE",
+      "sha256": "6543c4a66b46affddae1b9ae1e1992687f0b7191e74ba3a7235388b9f42a6d13",
+      "bytes": 1059
+    },
+    {
+      "repo": "JejuSoul/OBD-PIDs-for-HKMC-EVs",
+      "commit": "493b335a52a2b9d7a2aa3fa747c1d56e94f575ee",
+      "license": null,
+      "path": "Ioniq HEV/extendedpids/Hyundai_Ioniq_EV_VMCU_data.csv",
+      "local": "sources/JejuSoul/OBD-PIDs-for-HKMC-EVs/Ioniq HEV/extendedpids/Hyundai_Ioniq_EV_VMCU_data.csv",
+      "url": "https://raw.githubusercontent.com/JejuSoul/OBD-PIDs-for-HKMC-EVs/493b335a52a2b9d7a2aa3fa747c1d56e94f575ee/Ioniq%20HEV/extendedpids/Hyundai_Ioniq_EV_VMCU_data.csv",
+      "sha256": "4f37406e9bde9d9227c46f2fff21222f26eb513b952a364034086724e2dc4826",
+      "bytes": 503
+    },
+    {
+      "repo": "JejuSoul/OBD-PIDs-for-HKMC-EVs",
+      "commit": "493b335a52a2b9d7a2aa3fa747c1d56e94f575ee",
+      "license": null,
+      "path": "Ioniq HEV/extendedpids/Hyundai_Ioniq_HEV_BMS_data.csv",
+      "local": "sources/JejuSoul/OBD-PIDs-for-HKMC-EVs/Ioniq HEV/extendedpids/Hyundai_Ioniq_HEV_BMS_data.csv",
+      "url": "https://raw.githubusercontent.com/JejuSoul/OBD-PIDs-for-HKMC-EVs/493b335a52a2b9d7a2aa3fa747c1d56e94f575ee/Ioniq%20HEV/extendedpids/Hyundai_Ioniq_HEV_BMS_data.csv",
+      "sha256": "50aa75a60aa2062fe3548a67a2f5d2d180e41c8a85f7525aa70529e3277f4a92",
+      "bytes": 3240
+    },
+    {
+      "repo": "JejuSoul/OBD-PIDs-for-HKMC-EVs",
+      "commit": "493b335a52a2b9d7a2aa3fa747c1d56e94f575ee",
+      "license": null,
+      "path": "Ioniq HEV/extendedpids/Hyundai_Ioniq_HEV_Extra_gauges.csv",
+      "local": "sources/JejuSoul/OBD-PIDs-for-HKMC-EVs/Ioniq HEV/extendedpids/Hyundai_Ioniq_HEV_Extra_gauges.csv",
+      "url": "https://raw.githubusercontent.com/JejuSoul/OBD-PIDs-for-HKMC-EVs/493b335a52a2b9d7a2aa3fa747c1d56e94f575ee/Ioniq%20HEV/extendedpids/Hyundai_Ioniq_HEV_Extra_gauges.csv",
+      "sha256": "1a1ab493ddcb13cf9217b7db3528e726d7ddf116105f38bfbe3753d67b7bcd89",
+      "bytes": 248
+    },
+    {
+      "repo": "JejuSoul/OBD-PIDs-for-HKMC-EVs",
+      "commit": "493b335a52a2b9d7a2aa3fa747c1d56e94f575ee",
+      "license": null,
+      "path": "Ioniq PHEV - 8.9kWh/extendedpids/ABRP_Hyundai_Ioniq_PHEV_Data.csv",
+      "local": "sources/JejuSoul/OBD-PIDs-for-HKMC-EVs/Ioniq PHEV - 8.9kWh/extendedpids/ABRP_Hyundai_Ioniq_PHEV_Data.csv",
+      "url": "https://raw.githubusercontent.com/JejuSoul/OBD-PIDs-for-HKMC-EVs/493b335a52a2b9d7a2aa3fa747c1d56e94f575ee/Ioniq%20PHEV%20-%208.9kWh/extendedpids/ABRP_Hyundai_Ioniq_PHEV_Data.csv",
+      "sha256": "f63c7fc2fd0b9cfb76fa493dafcfec6e93de4c5082297b7e841349c3ee7feb44",
+      "bytes": 946
+    },
+    {
+      "repo": "JejuSoul/OBD-PIDs-for-HKMC-EVs",
+      "commit": "493b335a52a2b9d7a2aa3fa747c1d56e94f575ee",
+      "license": null,
+      "path": "Ioniq PHEV - 8.9kWh/extendedpids/Hyundai_Ioniq_EV_VMCU_data.csv",
+      "local": "sources/JejuSoul/OBD-PIDs-for-HKMC-EVs/Ioniq PHEV - 8.9kWh/extendedpids/Hyundai_Ioniq_EV_VMCU_data.csv",
+      "url": "https://raw.githubusercontent.com/JejuSoul/OBD-PIDs-for-HKMC-EVs/493b335a52a2b9d7a2aa3fa747c1d56e94f575ee/Ioniq%20PHEV%20-%208.9kWh/extendedpids/Hyundai_Ioniq_EV_VMCU_data.csv",
+      "sha256": "5566f4ee0a46021ff4836f55c1b384c4972459e28455cd52d083cb11093e7fe3",
+      "bytes": 592
+    },
+    {
+      "repo": "JejuSoul/OBD-PIDs-for-HKMC-EVs",
+      "commit": "493b335a52a2b9d7a2aa3fa747c1d56e94f575ee",
+      "license": null,
+      "path": "Ioniq PHEV - 8.9kWh/extendedpids/Hyundai_Ioniq_PHEV_BMS_data.csv",
+      "local": "sources/JejuSoul/OBD-PIDs-for-HKMC-EVs/Ioniq PHEV - 8.9kWh/extendedpids/Hyundai_Ioniq_PHEV_BMS_data.csv",
+      "url": "https://raw.githubusercontent.com/JejuSoul/OBD-PIDs-for-HKMC-EVs/493b335a52a2b9d7a2aa3fa747c1d56e94f575ee/Ioniq%20PHEV%20-%208.9kWh/extendedpids/Hyundai_Ioniq_PHEV_BMS_data.csv",
+      "sha256": "727a6c6a1e4b61df87b7c0ea88ebb9c97fdc835b5efa8d9fe3785871d4c2b97e",
+      "bytes": 3543
+    },
+    {
+      "repo": "JejuSoul/OBD-PIDs-for-HKMC-EVs",
+      "commit": "493b335a52a2b9d7a2aa3fa747c1d56e94f575ee",
+      "license": null,
+      "path": "Ioniq PHEV - 8.9kWh/extendedpids/Hyundai_Ioniq_PHEV_Extra_gauges.csv",
+      "local": "sources/JejuSoul/OBD-PIDs-for-HKMC-EVs/Ioniq PHEV - 8.9kWh/extendedpids/Hyundai_Ioniq_PHEV_Extra_gauges.csv",
+      "url": "https://raw.githubusercontent.com/JejuSoul/OBD-PIDs-for-HKMC-EVs/493b335a52a2b9d7a2aa3fa747c1d56e94f575ee/Ioniq%20PHEV%20-%208.9kWh/extendedpids/Hyundai_Ioniq_PHEV_Extra_gauges.csv",
+      "sha256": "8ecd66d9b88ac6b2b217ff878ce51aaf64db87cd22ba993110f995899051f30f",
+      "bytes": 746
+    },
+    {
+      "repo": "JejuSoul/OBD-PIDs-for-HKMC-EVs",
+      "commit": "493b335a52a2b9d7a2aa3fa747c1d56e94f575ee",
+      "license": null,
+      "path": "Kia Niro HEV/extendedpids/000_Niro_HEV_BMS_data.csv",
+      "local": "sources/JejuSoul/OBD-PIDs-for-HKMC-EVs/Kia Niro HEV/extendedpids/000_Niro_HEV_BMS_data.csv",
+      "url": "https://raw.githubusercontent.com/JejuSoul/OBD-PIDs-for-HKMC-EVs/493b335a52a2b9d7a2aa3fa747c1d56e94f575ee/Kia%20Niro%20HEV/extendedpids/000_Niro_HEV_BMS_data.csv",
+      "sha256": "e7e63ab609f494353804f1b586b89d023e7562cb66b82fca07e9d9a684f1300b",
+      "bytes": 3475
+    },
+    {
+      "repo": "JejuSoul/OBD-PIDs-for-HKMC-EVs",
+      "commit": "493b335a52a2b9d7a2aa3fa747c1d56e94f575ee",
+      "license": null,
+      "path": "Kia Niro HEV/extendedpids/002_Niro_HEV_Extra_gauges.csv",
+      "local": "sources/JejuSoul/OBD-PIDs-for-HKMC-EVs/Kia Niro HEV/extendedpids/002_Niro_HEV_Extra_gauges.csv",
+      "url": "https://raw.githubusercontent.com/JejuSoul/OBD-PIDs-for-HKMC-EVs/493b335a52a2b9d7a2aa3fa747c1d56e94f575ee/Kia%20Niro%20HEV/extendedpids/002_Niro_HEV_Extra_gauges.csv",
+      "sha256": "24edf9995496df6649167b482fb14314e95d03db79b96d95fcfb5041f4312415",
+      "bytes": 260
+    },
+    {
+      "repo": "JejuSoul/OBD-PIDs-for-HKMC-EVs",
+      "commit": "493b335a52a2b9d7a2aa3fa747c1d56e94f575ee",
+      "license": null,
+      "path": "Kia Niro HEV/extendedpids/0_Niro_PIDs_final.csv",
+      "local": "sources/JejuSoul/OBD-PIDs-for-HKMC-EVs/Kia Niro HEV/extendedpids/0_Niro_PIDs_final.csv",
+      "url": "https://raw.githubusercontent.com/JejuSoul/OBD-PIDs-for-HKMC-EVs/493b335a52a2b9d7a2aa3fa747c1d56e94f575ee/Kia%20Niro%20HEV/extendedpids/0_Niro_PIDs_final.csv",
+      "sha256": "eb9c35c65465f2c16e4e89f3933b3b3dee54bf5283e79bdf837b61b872cc5743",
+      "bytes": 6510
+    },
+    {
+      "repo": "JejuSoul/OBD-PIDs-for-HKMC-EVs",
+      "commit": "493b335a52a2b9d7a2aa3fa747c1d56e94f575ee",
+      "license": null,
+      "path": "Optima PHEV - 9.8kWh/extendedpids/Kia Optima_PHEV_BMS_data.csv",
+      "local": "sources/JejuSoul/OBD-PIDs-for-HKMC-EVs/Optima PHEV - 9.8kWh/extendedpids/Kia Optima_PHEV_BMS_data.csv",
+      "url": "https://raw.githubusercontent.com/JejuSoul/OBD-PIDs-for-HKMC-EVs/493b335a52a2b9d7a2aa3fa747c1d56e94f575ee/Optima%20PHEV%20-%209.8kWh/extendedpids/Kia%20Optima_PHEV_BMS_data.csv",
+      "sha256": "1756df9a4c6442970196b290d8ae64aa74e6cfd618cca89d78db02eb0df59ba8",
+      "bytes": 2355
+    },
+    {
+      "repo": "JejuSoul/OBD-PIDs-for-HKMC-EVs",
+      "commit": "493b335a52a2b9d7a2aa3fa747c1d56e94f575ee",
+      "license": null,
+      "path": "Optima PHEV - 9.8kWh/extendedpids/Kia Optima_PHEV_Extra_gauges.csv",
+      "local": "sources/JejuSoul/OBD-PIDs-for-HKMC-EVs/Optima PHEV - 9.8kWh/extendedpids/Kia Optima_PHEV_Extra_gauges.csv",
+      "url": "https://raw.githubusercontent.com/JejuSoul/OBD-PIDs-for-HKMC-EVs/493b335a52a2b9d7a2aa3fa747c1d56e94f575ee/Optima%20PHEV%20-%209.8kWh/extendedpids/Kia%20Optima_PHEV_Extra_gauges.csv",
+      "sha256": "f58cfbfd208cda7aecc62d70c8141711084a2b86ce378816fc0b921d83c712f3",
+      "bytes": 90
+    },
+    {
+      "repo": "OBDb/Kia-Optima",
+      "commit": "f79f02da380bd879a17ef51e5ef2532433c93b20",
+      "license": "CC-BY-SA-4.0",
+      "path": "signalsets/v3/default.json",
+      "local": "sources/OBDb/Kia-Optima/signalsets/v3/default.json",
+      "url": "https://raw.githubusercontent.com/OBDb/Kia-Optima/f79f02da380bd879a17ef51e5ef2532433c93b20/signalsets/v3/default.json",
+      "sha256": "91bec9fce2c5f1cc76792193d03423fbce9de3609c9ec4ab6342df1c2c27e763",
+      "bytes": 88150
+    },
+    {
+      "repo": "OBDb/Kia-Optima",
+      "commit": "f79f02da380bd879a17ef51e5ef2532433c93b20",
+      "license": "CC-BY-SA-4.0",
+      "path": "LICENSE",
+      "local": "sources/OBDb/Kia-Optima/LICENSE",
+      "url": "https://raw.githubusercontent.com/OBDb/Kia-Optima/f79f02da380bd879a17ef51e5ef2532433c93b20/LICENSE",
+      "sha256": "8cb7fbf0c30ba8728f4d6d276238b43554f41f8b435e23141a54f58560f5844c",
+      "bytes": 20145
+    },
+    {
+      "repo": "OBDb/Hyundai-Sonata",
+      "commit": "23d01c1525049b13d2607341c57b579454fa9dfb",
+      "license": "CC-BY-SA-4.0",
+      "path": "signalsets/v3/default.json",
+      "local": "sources/OBDb/Hyundai-Sonata/signalsets/v3/default.json",
+      "url": "https://raw.githubusercontent.com/OBDb/Hyundai-Sonata/23d01c1525049b13d2607341c57b579454fa9dfb/signalsets/v3/default.json",
+      "sha256": "30be2865e76e4b5e4be554a816f0d15958ab4c562b7b398d3fb5e2d968a27361",
+      "bytes": 200279
+    },
+    {
+      "repo": "OBDb/Hyundai-Sonata",
+      "commit": "23d01c1525049b13d2607341c57b579454fa9dfb",
+      "license": "CC-BY-SA-4.0",
+      "path": "LICENSE",
+      "local": "sources/OBDb/Hyundai-Sonata/LICENSE",
+      "url": "https://raw.githubusercontent.com/OBDb/Hyundai-Sonata/23d01c1525049b13d2607341c57b579454fa9dfb/LICENSE",
+      "sha256": "8cb7fbf0c30ba8728f4d6d276238b43554f41f8b435e23141a54f58560f5844c",
+      "bytes": 20145
+    },
+    {
+      "repo": "OBDb/Kia-Niro",
+      "commit": "d8899c08a382de6a19d608305859355bb080c388",
+      "license": "CC-BY-SA-4.0",
+      "path": "signalsets/v3/default.json",
+      "local": "sources/OBDb/Kia-Niro/signalsets/v3/default.json",
+      "url": "https://raw.githubusercontent.com/OBDb/Kia-Niro/d8899c08a382de6a19d608305859355bb080c388/signalsets/v3/default.json",
+      "sha256": "84ebab7de0d57c1037591405c04768f93c54349e3482ca87d784d3d0033a48e2",
+      "bytes": 213576
+    },
+    {
+      "repo": "OBDb/Kia-Niro",
+      "commit": "d8899c08a382de6a19d608305859355bb080c388",
+      "license": "CC-BY-SA-4.0",
+      "path": "LICENSE",
+      "local": "sources/OBDb/Kia-Niro/LICENSE",
+      "url": "https://raw.githubusercontent.com/OBDb/Kia-Niro/d8899c08a382de6a19d608305859355bb080c388/LICENSE",
+      "sha256": "8cb7fbf0c30ba8728f4d6d276238b43554f41f8b435e23141a54f58560f5844c",
+      "bytes": 20145
+    },
+    {
+      "repo": "OBDb/Hyundai-IONIQ",
+      "commit": "e4a37169e7d049dcf95516b76465c94c1cf01743",
+      "license": "CC-BY-SA-4.0",
+      "path": "signalsets/v3/default.json",
+      "local": "sources/OBDb/Hyundai-IONIQ/signalsets/v3/default.json",
+      "url": "https://raw.githubusercontent.com/OBDb/Hyundai-IONIQ/e4a37169e7d049dcf95516b76465c94c1cf01743/signalsets/v3/default.json",
+      "sha256": "8dce25b3454e99c553a0ebfa37d85cf9cd5367d9a1cd4bdfb62c0a7a7c22468c",
+      "bytes": 140238
+    },
+    {
+      "repo": "OBDb/Hyundai-IONIQ",
+      "commit": "e4a37169e7d049dcf95516b76465c94c1cf01743",
+      "license": "CC-BY-SA-4.0",
+      "path": "LICENSE",
+      "local": "sources/OBDb/Hyundai-IONIQ/LICENSE",
+      "url": "https://raw.githubusercontent.com/OBDb/Hyundai-IONIQ/e4a37169e7d049dcf95516b76465c94c1cf01743/LICENSE",
+      "sha256": "8cb7fbf0c30ba8728f4d6d276238b43554f41f8b435e23141a54f58560f5844c",
+      "bytes": 20145
+    },
+    {
+      "repo": "OBDb/Hyundai-Kona",
+      "commit": "556c90383c1c1f42d2838a9366e015ab8537df5d",
+      "license": "CC-BY-SA-4.0",
+      "path": "signalsets/v3/default.json",
+      "local": "sources/OBDb/Hyundai-Kona/signalsets/v3/default.json",
+      "url": "https://raw.githubusercontent.com/OBDb/Hyundai-Kona/556c90383c1c1f42d2838a9366e015ab8537df5d/signalsets/v3/default.json",
+      "sha256": "7a37ed0bd3b7f63f0ee70cdf3217d09f23bbd9336e701b78a96e3c42732b9acf",
+      "bytes": 54039
+    },
+    {
+      "repo": "OBDb/Hyundai-Kona",
+      "commit": "556c90383c1c1f42d2838a9366e015ab8537df5d",
+      "license": "CC-BY-SA-4.0",
+      "path": "LICENSE",
+      "local": "sources/OBDb/Hyundai-Kona/LICENSE",
+      "url": "https://raw.githubusercontent.com/OBDb/Hyundai-Kona/556c90383c1c1f42d2838a9366e015ab8537df5d/LICENSE",
+      "sha256": "8cb7fbf0c30ba8728f4d6d276238b43554f41f8b435e23141a54f58560f5844c",
+      "bytes": 20145
+    },
+    {
+      "repo": "OBDb/Hyundai-Elantra",
+      "commit": "e8758ccfd4b334e58159e6389f5791aa1c01db11",
+      "license": "CC-BY-SA-4.0",
+      "path": "signalsets/v3/default.json",
+      "local": "sources/OBDb/Hyundai-Elantra/signalsets/v3/default.json",
+      "url": "https://raw.githubusercontent.com/OBDb/Hyundai-Elantra/e8758ccfd4b334e58159e6389f5791aa1c01db11/signalsets/v3/default.json",
+      "sha256": "3ead2601067d080c26c5b220d2e7d686192a8645bbf462d4ebeda3d2dfba4e03",
+      "bytes": 117619
+    },
+    {
+      "repo": "OBDb/Hyundai-Elantra",
+      "commit": "e8758ccfd4b334e58159e6389f5791aa1c01db11",
+      "license": "CC-BY-SA-4.0",
+      "path": "LICENSE",
+      "local": "sources/OBDb/Hyundai-Elantra/LICENSE",
+      "url": "https://raw.githubusercontent.com/OBDb/Hyundai-Elantra/e8758ccfd4b334e58159e6389f5791aa1c01db11/LICENSE",
+      "sha256": "8cb7fbf0c30ba8728f4d6d276238b43554f41f8b435e23141a54f58560f5844c",
+      "bytes": 20145
+    },
+    {
+      "repo": "OBDb/Hyundai-Santa-Fe",
+      "commit": "4032c19cf0761cc673ce295919a9ca91be282905",
+      "license": "CC-BY-SA-4.0",
+      "path": "signalsets/v3/default.json",
+      "local": "sources/OBDb/Hyundai-Santa-Fe/signalsets/v3/default.json",
+      "url": "https://raw.githubusercontent.com/OBDb/Hyundai-Santa-Fe/4032c19cf0761cc673ce295919a9ca91be282905/signalsets/v3/default.json",
+      "sha256": "9fc2041d73644aae190b34ac6067289122f071c68b6f0041959069ff7e582cc0",
+      "bytes": 109612
+    },
+    {
+      "repo": "OBDb/Hyundai-Santa-Fe",
+      "commit": "4032c19cf0761cc673ce295919a9ca91be282905",
+      "license": "CC-BY-SA-4.0",
+      "path": "LICENSE",
+      "local": "sources/OBDb/Hyundai-Santa-Fe/LICENSE",
+      "url": "https://raw.githubusercontent.com/OBDb/Hyundai-Santa-Fe/4032c19cf0761cc673ce295919a9ca91be282905/LICENSE",
+      "sha256": "8cb7fbf0c30ba8728f4d6d276238b43554f41f8b435e23141a54f58560f5844c",
+      "bytes": 20145
+    },
+    {
+      "repo": "OBDb/Kia-Sorento",
+      "commit": "cb9bd0fcf997715912ee6e61c5e7e4aab3269d6c",
+      "license": "CC-BY-SA-4.0",
+      "path": "signalsets/v3/default.json",
+      "local": "sources/OBDb/Kia-Sorento/signalsets/v3/default.json",
+      "url": "https://raw.githubusercontent.com/OBDb/Kia-Sorento/cb9bd0fcf997715912ee6e61c5e7e4aab3269d6c/signalsets/v3/default.json",
+      "sha256": "e80b3bc2e4a603b5de9a82bfacbbf314690436f9ffa231ca512fb1792906b2eb",
+      "bytes": 165366
+    },
+    {
+      "repo": "OBDb/Kia-Sorento",
+      "commit": "cb9bd0fcf997715912ee6e61c5e7e4aab3269d6c",
+      "license": "CC-BY-SA-4.0",
+      "path": "LICENSE",
+      "local": "sources/OBDb/Kia-Sorento/LICENSE",
+      "url": "https://raw.githubusercontent.com/OBDb/Kia-Sorento/cb9bd0fcf997715912ee6e61c5e7e4aab3269d6c/LICENSE",
+      "sha256": "8cb7fbf0c30ba8728f4d6d276238b43554f41f8b435e23141a54f58560f5844c",
+      "bytes": 20145
+    },
+    {
+      "repo": "openvehicles/Open-Vehicle-Monitoring-System-3",
+      "commit": "7470869a2db574ad1fab962a3cae4f22e6cf1385",
+      "license": "NOASSERTION",
+      "path": "vehicle/OVMS.V3/components/vehicle_hyundai_ioniq5/src/hif_incoming_c_can.cpp",
+      "local": "sources/openvehicles/Open-Vehicle-Monitoring-System-3/vehicle/OVMS.V3/components/vehicle_hyundai_ioniq5/src/hif_incoming_c_can.cpp",
+      "url": "https://raw.githubusercontent.com/openvehicles/Open-Vehicle-Monitoring-System-3/7470869a2db574ad1fab962a3cae4f22e6cf1385/vehicle/OVMS.V3/components/vehicle_hyundai_ioniq5/src/hif_incoming_c_can.cpp",
+      "sha256": "238a8d55045384fe57c28b13ae8e81196dd134a2dacd0f13bc36fc34d03bc47b",
+      "bytes": 2569
+    },
+    {
+      "repo": "openvehicles/Open-Vehicle-Monitoring-System-3",
+      "commit": "7470869a2db574ad1fab962a3cae4f22e6cf1385",
+      "license": "NOASSERTION",
+      "path": "vehicle/OVMS.V3/components/vehicle_kianiroev/src/kn_incoming_c_can.cpp",
+      "local": "sources/openvehicles/Open-Vehicle-Monitoring-System-3/vehicle/OVMS.V3/components/vehicle_kianiroev/src/kn_incoming_c_can.cpp",
+      "url": "https://raw.githubusercontent.com/openvehicles/Open-Vehicle-Monitoring-System-3/7470869a2db574ad1fab962a3cae4f22e6cf1385/vehicle/OVMS.V3/components/vehicle_kianiroev/src/kn_incoming_c_can.cpp",
+      "sha256": "6dfb1c5d6746a2c3c788aef92629548b0ffba7dccf35d51e4b15d84c389ddb4a",
+      "bytes": 2100
+    },
+    {
+      "repo": "openvehicles/Open-Vehicle-Monitoring-System-3",
+      "commit": "7470869a2db574ad1fab962a3cae4f22e6cf1385",
+      "license": "NOASSERTION",
+      "path": "vehicle/OVMS.V3/components/vehicle_kiasoulev/src/ks_incoming_c_can.cpp",
+      "local": "sources/openvehicles/Open-Vehicle-Monitoring-System-3/vehicle/OVMS.V3/components/vehicle_kiasoulev/src/ks_incoming_c_can.cpp",
+      "url": "https://raw.githubusercontent.com/openvehicles/Open-Vehicle-Monitoring-System-3/7470869a2db574ad1fab962a3cae4f22e6cf1385/vehicle/OVMS.V3/components/vehicle_kiasoulev/src/ks_incoming_c_can.cpp",
+      "sha256": "aebce91602f219134a4229cec6a1f00042ea4ee7637df96c35515528e1178049",
+      "bytes": 8556
+    },
+    {
+      "repo": "openvehicles/Open-Vehicle-Monitoring-System-3",
+      "commit": "7470869a2db574ad1fab962a3cae4f22e6cf1385",
+      "license": "NOASSERTION",
+      "path": "vehicle/OVMS.V3/components/vehicle_kiasoulev/src/ks_incoming_m_can.cpp",
+      "local": "sources/openvehicles/Open-Vehicle-Monitoring-System-3/vehicle/OVMS.V3/components/vehicle_kiasoulev/src/ks_incoming_m_can.cpp",
+      "url": "https://raw.githubusercontent.com/openvehicles/Open-Vehicle-Monitoring-System-3/7470869a2db574ad1fab962a3cae4f22e6cf1385/vehicle/OVMS.V3/components/vehicle_kiasoulev/src/ks_incoming_m_can.cpp",
+      "sha256": "bc294bac97dce2f0a26394292a7cd763d5ba07aac9cd72074236e97994bd796c",
+      "bytes": 3140
+    },
+    {
+      "repo": "openvehicles/Open-Vehicle-Monitoring-System-3",
+      "commit": "7470869a2db574ad1fab962a3cae4f22e6cf1385",
+      "license": "NOASSERTION",
+      "path": "LICENSE",
+      "local": "sources/openvehicles/Open-Vehicle-Monitoring-System-3/LICENSE",
+      "url": "https://raw.githubusercontent.com/openvehicles/Open-Vehicle-Monitoring-System-3/7470869a2db574ad1fab962a3cae4f22e6cf1385/LICENSE",
+      "sha256": "d0a4ea9e1841ca68c4af149fcfb80a3d93ec335cbbdcde992552f5abc2c1e236",
+      "bytes": 1246
+    }
+  ]
+}
