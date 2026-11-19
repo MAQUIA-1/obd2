@@ -19,9 +19,25 @@
     "No external buffer or image URIs"
   ],
   "unverified": [
-    "Visual appearance in browser",
-    "Model scale and orientation",
     "Target smartphone/DeX performance"
   ],
-  "license_note": "No source or license text found in user-provided archive; original source URL not yet recorded"
+  "license_note": "No source or license text found in user-provided archive; original source URL not yet recorded",
+  "browser_verification": {
+    "browser": "Desktop Chromium with software WebGL",
+    "viewports": [
+      "360x800",
+      "430x932",
+      "720x1280"
+    ],
+    "checks": [
+      "model load",
+      "top view with rear steering guide",
+      "centered rear driving view",
+      "debug controls hidden by default",
+      "steering change and reset",
+      "park/drive transitions",
+      "Escape closes debug panel and restores focus"
+    ],
+    "runtime_errors": 0
+  }
 }
