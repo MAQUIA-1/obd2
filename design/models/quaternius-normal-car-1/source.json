@@ -1,0 +1,36 @@
+{
+  "author": "Quaternius",
+  "model": "NormalCar1",
+  "pack": "Cars Pack / November 2018",
+  "license": "CC0-1.0",
+  "source": "https://quaternius.com/packs/cars.html",
+  "download_folder": "https://drive.google.com/drive/folders/1fKlbDry77iY8KlEoxzUxIAZQL_XhzWlA",
+  "retrieved": "2026-11-19",
+  "files": {
+    "NormalCar1.obj": {
+      "bytes": 130205,
+      "sha256": "02fc7baaa6ea489a1f05c02fd5ef712e78e727f41761ede446cc19d300b442d5"
+    },
+    "NormalCar1.mtl": {
+      "bytes": 1137,
+      "sha256": "e8a236ff366cdc3a10451b37de1b64ac34df4c65e072760a90b3145cfff22032"
+    }
+  },
+  "verification": {
+    "vertices": 1491,
+    "triangles": 2954,
+    "objects": [
+      "body",
+      "rear wheels pair",
+      "front left wheel",
+      "front right wheel"
+    ],
+    "notes": [
+      "Front wheels are separate objects in original OBJ",
+      "OBJ vertex coordinates are world space; recenter steering pivots during GLB export",
+      "Rear wheels are combined; separate during export for independent wheel roll",
+      "No GLB export or browser animation test performed yet"
+    ]
+  },
+  "selection_status": "not_selected_user_prefers_smooth_surfaces"
+}

@@ -1,0 +1,27 @@
+{
+  "model": "User-provided 2015 Hyundai Sonata",
+  "source_archive": "2015-hyundai-sonata.zip",
+  "source_entry": "source/sonata15.glb",
+  "sha256": "6ffd0c53e6eadf5e47fbfe511d96895b64dd921787d6345cbfc5fc804edacf1e",
+  "bytes": 3166192,
+  "gltf_version": "2.0",
+  "meshes": 18,
+  "nodes": 18,
+  "materials": 17,
+  "images": 10,
+  "triangles": 46462,
+  "external_dependencies": [],
+  "required_extensions": [],
+  "checks": [
+    "GLB header and total length",
+    "JSON/BIN chunk identifiers",
+    "Embedded buffer and bufferView bounds",
+    "No external buffer or image URIs"
+  ],
+  "unverified": [
+    "Visual appearance in browser",
+    "Model scale and orientation",
+    "Target smartphone/DeX performance"
+  ],
+  "license_note": "No source or license text found in user-provided archive; original source URL not yet recorded"
+}
