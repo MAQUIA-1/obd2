@@ -1,7 +1,7 @@
-import { Suspense, useEffect, useMemo, useRef } from 'react'
+import { Fragment, Suspense, useEffect, useMemo, useRef } from 'react'
 import { useReducedMotion } from 'motion/react'
-import { Canvas, useFrame, useThree } from '@react-three/fiber'
-import { ContactShadows, Line, PerspectiveCamera, useGLTF } from '@react-three/drei'
+import { Canvas, createPortal, useFrame, useThree } from '@react-three/fiber'
+import { ContactShadows, Line, Outlines, PerspectiveCamera, useGLTF } from '@react-three/drei'
 import { Mesh, Quaternion, Vector3 } from 'three'
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js'
 import modelUrl from '../../../design/models/sonata-lf/sonata15.glb?url'
@@ -24,6 +24,15 @@ function Sonata() {
     })
     return copy
   }, [scene])
+  const outlineMeshes = useMemo(() => {
+    const meshes: Mesh[] = []
+    model.traverse((object) => {
+      if (!(object instanceof Mesh)) return
+      const materials = Array.isArray(object.material) ? object.material : [object.material]
+      if (materials.some((material) => material.name.includes('body'))) meshes.push(object)
+    })
+    return meshes
+  }, [model])
   const wheels = useMemo(() => {
     const front: { wheel: Mesh; rest: Quaternion }[] = []
     model.traverse((wheel) => {
@@ -42,7 +51,19 @@ function Sonata() {
       wheel.quaternion.copy(rest).premultiply(rotation.setFromAxisAngle(up, -angle))
     }
   })
-  return <primitive object={model} scale={[MODEL_SCALE_X, MODEL_SCALE_Z, MODEL_SCALE_Z]} dispose={null} />
+  return (
+    <>
+      <primitive object={model} scale={[MODEL_SCALE_X, MODEL_SCALE_Z, MODEL_SCALE_Z]} dispose={null} />
+      {outlineMeshes.map((mesh) => (
+        <Fragment key={mesh.uuid}>
+          {createPortal(
+            <Outlines thickness={0.65} color="#737e88" opacity={0.4} transparent toneMapped={false} />,
+            mesh,
+          )}
+        </Fragment>
+      ))}
+    </>
+  )
 }
 
 function CameraRig() {
