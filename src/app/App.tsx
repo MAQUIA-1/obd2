@@ -2,6 +2,8 @@ import { lazy, Suspense } from 'react'
 import { DebugPanel } from '../features/debug/DebugPanel'
 import { SceneBoundary } from '../features/vehicle-scene/SceneBoundary'
 import { useDemo } from '../stores/demo'
+import { useDemoDriveStatus } from '../features/drive-status/use-demo-drive-status'
+import { demoActivity } from '../features/drive-status/demo-scenarios'
 import { DEMO_READINGS } from '../features/vehicle-info/demo-readings'
 
 const VehicleScene = lazy(() => import('../features/vehicle-scene/VehicleScene'))
@@ -10,6 +12,9 @@ export function App() {
   const view = useDemo((state) => state.view)
   const angle = useDemo((state) => state.steeringDeg)
   const speed = useDemo((state) => state.speedKph)
+  const scenario = useDemo((state) => state.scenario)
+  const activity = demoActivity({ view, speedKph: speed, scenario })
+  const driveStatus = useDemoDriveStatus()
   const parked = view === 'park'
   const reversing = view === 'reverse'
   const gear = parked ? 'P' : reversing ? 'R' : view === 'neutral' ? 'N' : 'D'
@@ -23,6 +28,11 @@ export function App() {
               aria-current={item === gear ? 'true' : undefined}>{item}</span>
           ))}
         </div>
+        {!parked && !reversing && (
+          <p className="drive-status" role="status" aria-live="polite" data-state={driveStatus.status}>
+            {driveStatus.label}
+          </p>
+        )}
         <div className="primary-readout">
           {!parked && (
             <div className="speed" aria-label={reversing ? '후진 속도' : '속도'}>
@@ -31,8 +41,8 @@ export function App() {
           )}
           {!parked && !reversing && (
             <div className="activity-group" aria-label="회전수와 전류, 데모 값">
-              <output aria-label="엔진 회전수">{DEMO_READINGS.rpm.toFixed(0)}<span>rpm</span></output>
-              <output aria-label="HV 배터리 전류">{DEMO_READINGS.batteryCurrentA.toFixed(1)}<span>A</span></output>
+              <output aria-label="엔진 회전수">{activity.rpm.toFixed(0)}<span>rpm</span></output>
+              <output aria-label="HV 배터리 전류">{activity.batteryCurrentA.toFixed(1)}<span>A</span></output>
             </div>
           )}
         </div>

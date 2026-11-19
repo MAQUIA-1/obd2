@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { AnimatePresence, motion, useReducedMotion } from 'motion/react'
 import { MAX_STEERING_DEG } from '../vehicle-scene/vehicle-motion'
+import { DEMO_SCENARIOS, type DemoScenario } from '../drive-status/demo-scenarios'
 import { useDemo } from '../../stores/demo'
 
 export function DebugPanel() {
@@ -11,6 +12,8 @@ export function DebugPanel() {
   const view = useDemo((state) => state.view)
   const speed = useDemo((state) => state.speedKph)
   const setSpeed = useDemo((state) => state.setSpeed)
+  const scenario = useDemo((state) => state.scenario)
+  const setScenario = useDemo((state) => state.setScenario)
   const angle = useDemo((state) => state.steeringDeg)
   const setView = useDemo((state) => state.setView)
   const setSteering = useDemo((state) => state.setSteering)
@@ -83,6 +86,13 @@ export function DebugPanel() {
                 disabled={view === 'park'} aria-valuetext={`${speed}킬로미터 매 시`}
                 onChange={(event) => setSpeed(Number(event.target.value))} />
               {view === 'park' && <p className="debug-note">속도 변경은 R/N/D에서 가능합니다.</p>}
+            </div>
+            <div className="debug-section">
+              <label className="scenario-label" htmlFor="drive-scenario">주행 입력 예시</label>
+              <select id="drive-scenario" value={scenario} onChange={(event) => setScenario(event.target.value as DemoScenario)}>
+                {Object.entries(DEMO_SCENARIOS).map(([key, item]) => <option key={key} value={key}>{item.label}</option>)}
+              </select>
+              <p className="scenario-note">선택하면 D로 전환합니다. 속도·RPM·전류 예시로 추정하며, 감속 예시는 속도가 서서히 줄어듭니다. 전류는 +방전/−충전을 가정한 목업입니다.</p>
             </div>
             <p className="debug-note">점선은 상대적인 조향 가이드이며 실제 주차 궤적이 아닙니다.</p>
           </motion.aside>
