@@ -12,10 +12,12 @@ def main():
  p=argparse.ArgumentParser(description=__doc__)
  p.add_argument('--output',type=Path,required=True)
  p.add_argument('--seconds',type=float,default=300)
+ p.add_argument('--dids',nargs='+',choices=DIDS,default=DIDS,
+                help='Previously responsive read groups to collect; narrow for faster comparisons')
  a=p.parse_args()
  if a.seconds<=0:p.error('--seconds must be positive')
  a.output.mkdir(parents=True,exist_ok=False)
- append_json(a.output/'metadata.jsonl',dict(timestamp=time.time(),transport='classic-spp',vehicle='2015 LF Sonata Hybrid',mode='BCM read-only comparisons',tx='7A0',rx='7A8',dids=DIDS,meaning='unknown bits; controlled observations required'))
+ append_json(a.output/'metadata.jsonl',dict(timestamp=time.time(),transport='classic-spp',vehicle='2015 LF Sonata Hybrid',mode='BCM read-only comparisons',tx='7A0',rx='7A8',dids=a.dids,meaning='unknown bits; controlled observations required'))
  c=ClassicCapture('00:10:CC:4F:36:03',a.output)
  try:
   c.connect()
@@ -24,7 +26,7 @@ def main():
   end=time.monotonic()+a.seconds;cycle=0
   while time.monotonic()<end:
    cycle+=1;statuses={}
-   for did in DIDS:
+   for did in a.dids:
     if time.monotonic()>=end:break
     start=time.time();response=c.command('22'+did,verbose=False)
     row=dict(timestamp=time.time(),started_at=start,name=did,command='22'+did,response=response,cycle=cycle)
