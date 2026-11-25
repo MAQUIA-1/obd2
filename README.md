@@ -1,6 +1,6 @@
 # OBD Dashboard
 
-2015년식 LF 쏘나타 하이브리드용 OBD-II 대시보드. Android Chrome의 Web Serial API로 Bluetooth Classic SPP 어댑터에 연결하고, 차량 PID를 조회해 속도·기어·배터리 정보를 표시합니다. React와 Three.js로 구현했으며 DeX 세로 화면에 맞춰 배치했습니다.
+2015년식 LF 쏘나타 하이브리드용 OBD-II 대시보드. Android Chrome의 Web Serial API로 Bluetooth Classic SPP 어댑터에 연결하고, 차량 PID를 조회해 속도·기어·배터리 정보를 표시합니다. React와 Three.js로 구현했으며 Samsung DeX 환경을 고려해 화면을 구성했습니다.
 
 ## 차량 연결
 
