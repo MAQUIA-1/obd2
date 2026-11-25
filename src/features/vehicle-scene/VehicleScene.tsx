@@ -74,7 +74,8 @@ function CameraRig({ view }: { view: ViewMode }) {
     controls.target.copy(cameraPose('park', 1).target)
     controls.enablePan = false
     controls.enableZoom = false
-    controls.enableDamping = false
+    controls.rotateSpeed = 0.45
+    controls.saveState()
     controls.minPolarAngle = 0.65
     controls.maxPolarAngle = 1.38
     controls.enabled = false
@@ -83,14 +84,21 @@ function CameraRig({ view }: { view: ViewMode }) {
   const previous = useRef('')
   const transition = useRef(new CameraTransition())
 
-  useFrame(({ camera, size, gl }) => {
+  useFrame(({ camera, size, gl }, delta) => {
     const scale = Math.max(1, 0.8 / (size.width / size.height))
     const key = `${view}:${scale}:${reduceMotion}`
     const now = performance.now() / 1000
+    const controls = controlsRef.current
     if (previous.current !== key) {
       const firstFrame = previous.current === ''
       previous.current = key
       transition.current.begin(camera, cameraPose(view, scale), now, firstFrame || reduceMotion ? 0 : 0.85)
+      if (controls?.enabled) {
+        // Clear the queued drag after capturing the transition's starting pose.
+        controls.enabled = false
+        controls.enableDamping = false
+        controls.reset()
+      }
     }
     transition.current.update(camera, now)
     // Keep the driving views fixed after completing the transition.
@@ -99,10 +107,14 @@ function CameraRig({ view }: { view: ViewMode }) {
       camera.position.copy(pose.position)
       camera.quaternion.copy(pose.quaternion)
     }
-    const controls = controlsRef.current
     if (controls) {
       controls.enabled = view === 'park' && !transition.current.active
-      if (controls.enabled) controls.update()
+      controls.enableDamping = !reduceMotion
+      if (controls.enabled) {
+        // Decay over elapsed time so drag inertia also settles on slower displays.
+        controls.dampingFactor = -Math.expm1(-Math.min(delta, 0.1) / 0.095)
+        controls.update()
+      }
     }
     gl.domElement.dataset.cameraMode = view
     gl.domElement.dataset.cameraTransitioning = String(transition.current.active)
