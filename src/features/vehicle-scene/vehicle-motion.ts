@@ -1,4 +1,4 @@
-// SI units. Sources, market assumptions, GLB measurements: research/차량_운동_모델.md.
+// SI units. Sources, market assumptions, GLB measurements: docs/design/차량_운동_모델.md.
 export const VEHICLE = {
   wheelbase: 2.805,
   width: 1.865,

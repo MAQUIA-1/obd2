@@ -1,8 +1,8 @@
-# 차량 없이 웹 개발 이어가기
+# 웹 OBD 연동
 
 ## 현재 가능 범위
 
-Web Serial 연결과 기본 11개 항목의 폴링·응답 해석을 `src/features/obd/`에 구현했다. 노트북 수집 코드의 기준은 `tools/obd_poll.py`의 TASKS, payload_for, decode다. 실제 수집 결과는 `research/Classic_폴링_수집_결과.md`, 스마트폰 연결 순서는 `README.md` 참고.
+Web Serial 연결과 기본 11개 항목의 폴링·응답 해석을 `src/features/obd/`에 구현했다. 노트북 수집 코드의 기준은 `tools/obd_poll.py`의 TASKS, payload_for, decode다. [실차 수집 결과](Classic_폴링_수집_결과.md)와 [스마트폰 연결 순서](../../README.md#사용하기)를 참고한다.
 
 ## 재현에 필요한 자료
 
@@ -12,7 +12,7 @@ Web Serial 연결과 기본 11개 항목의 폴링·응답 해석을 `src/featur
 - `captures/poll-baseline-01/`: 전체 기본 수집 원본 107건 및 통계.
 - `captures/poll-steering-02/`: 조향 조작 로그.
 - `captures/body-controls-01`, `body-controls-03`, `body-options-04`, `body-lights-05`: 추가 옵션 조작 로그와 스냅샷.
-- `research/추가옵션_분석_진행.md`: 추가 옵션 후보와 공개 자료 적용 한계.
+- [추가 옵션 분석](추가옵션_분석_진행.md): 추가 옵션 후보와 공개 자료 적용 한계.
 
 `captures/` 및 `research/sources/`는 .gitignore 대상이다. 다른 PC로 이동할 때 전체 폴더를 별도 복사하거나 백업한다. 최소 개발용 실제 응답 예제는 Git 제외 경로 밖인 `research/fixtures/`에 따로 복사해 두었다. 원시 로그 전체는 커밋 대상에 포함하지 않는다. Git 커밋과 별도로 원격 백업 여부를 확인해야 한다.
 
@@ -30,7 +30,9 @@ Web Serial 연결과 기본 11개 항목의 폴링·응답 해석을 `src/featur
 | 제어 모듈 전압 | 7E0 / 7E8 | 0142 |
 | 외기온 | 7E0 / 7E8 | 0146 |
 
-어댑터 초기화: ATD, ATE0, ATL0, ATS1, ATH1, ATD0, ATSP6, ATCAF1, ATAL. 각 명령의 OK와 완료 프롬프트를 확인한다. ECU가 바뀌면 ATSH로 TX 헤더를 바꾸고, 한 번에 하나의 요청만 보내 완료 프롬프트까지 읽는다. RX 헤더·서비스·PID·길이·ISO-TP 순서를 확인한 뒤 값을 적용한다. 타임아웃 후 늦게 온 응답을 다음 요청의 응답으로 사용하지 않는다.
+어댑터 초기화: ATD, ATE0, ATL0, ATS1, ATH1, ATD0, ATSP6, ATCAF1, ATAL. 각 명령의 OK와 완료 프롬프트를 확인한다. ECU가 바뀌면 ATSH로 TX 헤더를 바꾸고, 한 번에 하나의 요청만 보내 완료 프롬프트까지 읽는다. RX 헤더·서비스·PID·길이·ISO-TP 순서를 확인한 뒤 값을 적용한다. 명령이 3초 안에 끝나지 않거나 응답 경계를 잃으면 포트를 닫고 재연결을 기다린다. 종료 전의 요청과 다시 연결한 뒤의 요청은 서로 다른 세션에서 처리한다.
+
+속도·RPM·기어·배터리·조향 값은 3초, 연료·냉각수온·제어 모듈 전압·외기온은 25초가 지나면 화면에서 만료된다. 브라우저는 차량 값을 메모리에 두고 연결을 종료하면 비운다.
 
 ## 추가 옵션의 상태
 

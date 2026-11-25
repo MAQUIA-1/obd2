@@ -26,11 +26,11 @@ LF 일반형만으로 범위를 제한하지 않는다. 공개 코드의 LF 일�
 
 11개 공개 저장소를 조회하고, 고정 커밋 기준 44개 파일(라이선스 파일 포함)을 내려받았다. 다운로드 원본과 근거는 다음 파일에 남겼다.
 
-- [원본별 URL·커밋·SHA-256](sources_manifest.json)
-- [DBC 전체 메시지·신호 색인](dbc_inventory.json)
-- [첫 적용 대상 메시지 정의](first_pass_messages.json)
+- [원본별 URL·커밋·SHA-256](../../research/sources_manifest.json)
+- [DBC 전체 메시지·신호 색인](../../research/dbc_inventory.json)
+- [첫 적용 대상 메시지 정의](../../research/first_pass_messages.json)
 - [방송 메시지 목록](방송_메시지_색인.md)
-- [OBDb 요청·응답 명령 색인](pid_command_inventory.json)
+- [OBDb 요청·응답 명령 색인](../../research/pid_command_inventory.json)
 
 DBC 8개 파일에서 메시지 정의 627개와 신호 정의 5,611개를 색인했다. 같은 ID·신호의 대안 정의와 CAN FD 자료도 포함한 합계이며, 서로 다른 차량에서 전부 받을 수 있다는 뜻이 아니다. 첫 적용 메시지는 59개 대안 정의로 추렸다. 색인은 문법 기반 추출이며 실제 디코더와 차량 검증을 대체하지 않는다.
 
@@ -40,16 +40,16 @@ DBC 8개 파일에서 메시지 정의 627개와 신호 정의 5,611개를 색�
 
 | 파일 | 내용과 활용 |
 |---|---|
-| [hyundai_can.dbc](sources/commaai/opendbc/opendbc/dbc/generator/hyundai/hyundai_can.dbc) | 일반 CAN의 광범위한 현대·기아 메시지 정의. 첫 적용 대상 |
-| [hyundai_2015_ccan.dbc](sources/commaai/opendbc/opendbc/dbc/hyundai_2015_ccan.dbc) | 2015 세대 C-CAN 대안 정의. 일반 정의와 차이를 비교 |
-| [hyundai_2015_mcan.dbc](sources/commaai/opendbc/opendbc/dbc/hyundai_2015_mcan.dbc) | M-CAN 자료. 별도 버스 가시성에 의존 |
-| [hyundai_i30_2014.dbc](sources/commaai/opendbc/opendbc/dbc/hyundai_i30_2014.dbc) | 이전 세대 참고 정의 |
-| [hyundai_santafe_2007.dbc](sources/commaai/opendbc/opendbc/dbc/hyundai_santafe_2007.dbc) | 오래된 세대 참고 정의 |
-| [hyundai_canfd.dbc](sources/commaai/opendbc/opendbc/dbc/generator/hyundai/hyundai_canfd.dbc) | 신형 CAN FD 비교 자료 |
-| [_hyundai_canfd_common.dbc](sources/commaai/opendbc/opendbc/dbc/generator/hyundai/_hyundai_canfd_common.dbc) | CAN FD 공통 정의. 다른 파일의 IMPORT 대상 |
-| [hyundai_palisade_2023.dbc](sources/commaai/opendbc/opendbc/dbc/generator/hyundai/hyundai_palisade_2023.dbc) | 최신 세대 보조 참고 |
-| [carstate.py](sources/commaai/opendbc/opendbc/car/hyundai/carstate.py) | 실제 상태 해석, 기어 분기, 단위 및 상태 판정 참고 |
-| [values.py](sources/commaai/opendbc/opendbc/car/hyundai/values.py) | LF, 옵티마 HEV, 아이오닉·니로 등 차종별 분기 근거 |
+| [hyundai_can.dbc](https://github.com/commaai/opendbc/blob/79ddcc7bb72d557fc5b20d038c0fad9c9d423446/opendbc/dbc/generator/hyundai/hyundai_can.dbc) | 일반 CAN의 광범위한 현대·기아 메시지 정의. 첫 적용 대상 |
+| [hyundai_2015_ccan.dbc](https://github.com/commaai/opendbc/blob/79ddcc7bb72d557fc5b20d038c0fad9c9d423446/opendbc/dbc/hyundai_2015_ccan.dbc) | 2015 세대 C-CAN 대안 정의. 일반 정의와 차이를 비교 |
+| [hyundai_2015_mcan.dbc](https://github.com/commaai/opendbc/blob/79ddcc7bb72d557fc5b20d038c0fad9c9d423446/opendbc/dbc/hyundai_2015_mcan.dbc) | M-CAN 자료. 별도 버스 가시성에 의존 |
+| [hyundai_i30_2014.dbc](https://github.com/commaai/opendbc/blob/79ddcc7bb72d557fc5b20d038c0fad9c9d423446/opendbc/dbc/hyundai_i30_2014.dbc) | 이전 세대 참고 정의 |
+| [hyundai_santafe_2007.dbc](https://github.com/commaai/opendbc/blob/79ddcc7bb72d557fc5b20d038c0fad9c9d423446/opendbc/dbc/hyundai_santafe_2007.dbc) | 오래된 세대 참고 정의 |
+| [hyundai_canfd.dbc](https://github.com/commaai/opendbc/blob/79ddcc7bb72d557fc5b20d038c0fad9c9d423446/opendbc/dbc/generator/hyundai/hyundai_canfd.dbc) | 신형 CAN FD 비교 자료 |
+| [_hyundai_canfd_common.dbc](https://github.com/commaai/opendbc/blob/79ddcc7bb72d557fc5b20d038c0fad9c9d423446/opendbc/dbc/generator/hyundai/_hyundai_canfd_common.dbc) | CAN FD 공통 정의. 다른 파일의 IMPORT 대상 |
+| [hyundai_palisade_2023.dbc](https://github.com/commaai/opendbc/blob/79ddcc7bb72d557fc5b20d038c0fad9c9d423446/opendbc/dbc/generator/hyundai/hyundai_palisade_2023.dbc) | 최신 세대 보조 참고 |
+| [carstate.py](https://github.com/commaai/opendbc/blob/79ddcc7bb72d557fc5b20d038c0fad9c9d423446/opendbc/car/hyundai/carstate.py) | 실제 상태 해석, 기어 분기, 단위 및 상태 판정 참고 |
+| [values.py](https://github.com/commaai/opendbc/blob/79ddcc7bb72d557fc5b20d038c0fad9c9d423446/opendbc/car/hyundai/values.py) | LF, 옵티마 HEV, 아이오닉·니로 등 차종별 분기 근거 |
 
 현재 원본에서는 `hyundai_can_generated`가 일반 CAN 기본 DBC 이름이다. 과거 자료의 `hyundai_kia_generic`라는 이름만 검색하면 최신 파일 위치를 놓칠 수 있다. 생성 전 원본은 위 `generator/hyundai/hyundai_can.dbc`다. CAN FD 파일의 IMPORT와 생성 규칙은 실제 파서 도입 시 반영한다.
 
