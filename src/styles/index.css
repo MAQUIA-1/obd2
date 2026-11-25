@@ -22,6 +22,8 @@ button:focus-visible, input:focus-visible { outline: 2px solid #537b9e; outline-
 .vehicle-stage > .scene-message { position: absolute; inset: 50% auto auto 50%; transform: translate(-50%, -50%); }
 .activity-group { display: flex; align-items: baseline; gap: 16px; }
 .activity-group > output { color: var(--ink); font-size: 20px; line-height: 32px; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.activity-group > output[data-current-direction="charging"] { color: #187448; }
+.activity-group > output[data-current-direction="discharging"] { color: #a94a12; }
 .activity-group > output > span { margin-left: 3px; color: var(--muted); font-size: 10px; line-height: 1; }
 .telemetry-groups { flex: 0 0 162px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 40px; align-content: start; padding-top: 14px; }
 .telemetry-group h2 { margin-bottom: 12px; color: var(--muted); font-size: 11px; line-height: 18px; font-weight: 400; }

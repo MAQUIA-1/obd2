@@ -1,5 +1,5 @@
 import { lazy, Suspense, type ReactNode } from 'react'
-import { LABELS, type Status } from '../features/drive-status/state-machine'
+import { DEFAULT_POLICY, LABELS, type Status } from '../features/drive-status/state-machine'
 import type { Gear, Readings } from '../features/obd/protocol'
 import type { ViewMode } from '../features/vehicle-scene/camera-transition'
 import { SceneBoundary } from '../features/vehicle-scene/SceneBoundary'
@@ -26,6 +26,10 @@ export function Dashboard({ read, status, footer, tools }: DashboardProps) {
   const speed = read('speedKph')
   const rpm = read('rpm')
   const current = read('batteryCurrentA')
+  const currentDirection = current === undefined || current === 0
+    ? undefined
+    : current * DEFAULT_POLICY.dischargeSign > 0 ? 'discharging' : 'charging'
+  const currentPrefix = current !== undefined && current > 0 ? '+' : ''
   const ambient = read('outsideTempC')
   const fuel = read('fuelPct')
   const soc = read('batterySocPct')
@@ -53,7 +57,9 @@ export function Dashboard({ read, status, footer, tools }: DashboardProps) {
           {!parked && !reversing && (
             <div className="activity-group" aria-label="회전수와 전류">
               <output aria-label="엔진 회전수">{format(rpm)}<span>rpm</span></output>
-              <output aria-label="HV 배터리 전류">{format(current, 1)}<span>A</span></output>
+              <output aria-label="HV 배터리 전류" data-current-direction={currentDirection}>
+                {currentPrefix + format(current, 1)}<span>A</span>
+              </output>
             </div>
           )}
         </div>
