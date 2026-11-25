@@ -2,7 +2,7 @@
 
 ## 현재 가능 범위
 
-Web Serial 연결과 기본 11개 항목의 폴링·응답 해석을 `src/features/obd/`에 구현했다. 노트북 수집 코드의 기준은 `tools/obd_poll.py`의 TASKS, payload_for, decode다. [실차 수집 결과](Classic_폴링_수집_결과.md)와 [스마트폰 연결 순서](../../README.md#사용하기)를 참고한다.
+Web Serial 연결과 기본 11개 항목의 폴링·응답 해석을 `src/features/obd/`에 구현했다. 노트북 수집 코드의 기준은 `tools/obd_poll.py`의 TASKS, payload_for, decode다. [실차 수집 결과](Classic_폴링_수집_결과.md)와 [스마트폰 연결 순서](../../README.md#차량-연결)를 참고한다.
 
 ## 재현에 필요한 자료
 
