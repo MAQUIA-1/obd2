@@ -16,6 +16,16 @@ Web Serial 연결과 기본 11개 항목의 폴링·응답 해석을 `src/featur
 
 `captures/` 및 `research/sources/`는 .gitignore 대상이다. 다른 PC로 이동할 때 전체 폴더를 별도 복사하거나 백업한다. 최소 개발용 실제 응답 예제는 Git 제외 경로 밖인 `research/fixtures/`에 따로 복사해 두었다. 원시 로그 전체는 커밋 대상에 포함하지 않는다. Git 커밋과 별도로 원격 백업 여부를 확인해야 한다.
 
+## 노트북에서 폴링 재현
+
+Linux BlueZ와 Python의 `dbus`, `gi` 모듈을 사용한다. 차량을 정차한 상태에서 어댑터를 페어링하고 다른 앱의 연결을 해제한다. 아래 예제의 `$OBD_ADDRESS`에는 페어링한 어댑터 주소를 넣는다. 출력 경로는 수집 도구가 새로 만든다.
+
+```sh
+python3 tools/obd_poll.py --address "$OBD_ADDRESS" --seconds 20 --output captures/poll-baseline
+```
+
+조작 비교 시에는 안내와 실제 조작 확인 시각에 따로 마커를 남기고, 전환 구간을 제외해 비교한다. 수집 시각은 노트북에서 응답을 받은 시각이다. 방송 CAN 모니터링을 다시 조사할 경우 [첫 연결 기록](실차_첫연결_결과.md)과 [수집 도구](../../tools/can_capture.py)를 참고한다.
+
 ## 기본 요청표
 
 | 항목 | TX / RX | 요청 |
