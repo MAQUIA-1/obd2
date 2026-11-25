@@ -1,18 +1,18 @@
 import { useEffect, useRef, useState } from 'react'
-import { DriveStatusMachine, LABELS, type Snapshot, type Status } from '../drive-status/state-machine'
+import { DriveStatusMachine, type Snapshot, type Status } from '../drive-status/state-machine'
 import { pollVehicle, SPP } from './session'
 import type { Readings } from './protocol'
 
 type Samples = { [K in keyof Readings]?: { value: Readings[K]; at: number; verified: true } }
-type Connection = 'demo' | 'selecting' | 'connecting' | 'connected' | 'closing' | 'disconnected' | 'error'
+type Connection = 'idle' | 'selecting' | 'connecting' | 'connected' | 'closing' | 'disconnected' | 'error'
 type VehicleState = { phase: Connection; message: string; samples: Samples; now: number; status: Status }
 
-const initial: VehicleState = { phase: 'demo', message: '차량 미연결 · 데모', samples: {}, now: 0, status: 'waiting' }
+const initial: VehicleState = { phase: 'idle', message: '차량 미연결', samples: {}, now: 0, status: 'waiting' }
 const slow = new Set<keyof Readings>(['fuelPct', 'coolantTempC', 'controlVoltageV', 'outsideTempC'])
 const notes = {
   selecting: '페어링한 OBD 어댑터를 선택하세요.',
   connecting: '차량 응답을 기다리는 중',
-  connected: '실차 데이터 수신 중',
+  connected: '차량 연결됨',
   closing: '연결 해제 중',
   disconnected: '차량 연결 해제됨',
 }
@@ -85,11 +85,9 @@ export function useVehicle() {
     phase: state.phase,
     message: state.message,
     status: state.status,
-    statusLabel: LABELS[state.status],
-    supported: window.isSecureContext && 'serial' in navigator,
+    supported: window.isSecureContext && Boolean(navigator.serial),
     read,
     connect,
     disconnect,
-    demo: () => { if (!active.current) setState(initial) },
   }
 }

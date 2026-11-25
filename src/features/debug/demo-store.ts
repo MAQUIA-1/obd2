@@ -1,8 +1,8 @@
 import { create } from 'zustand'
-import { DEMO_SCENARIOS, type DemoScenario } from '../features/drive-status/demo-scenarios'
-import { clampSteering } from '../features/vehicle-scene/vehicle-motion'
+import { DEMO_SCENARIOS, type DemoScenario } from './demo-scenarios'
+import { clampSteering } from '../vehicle-scene/vehicle-motion'
 
-export type ViewMode = 'park' | 'reverse' | 'neutral' | 'drive'
+import type { ViewMode } from '../vehicle-scene/camera-transition'
 
 type DemoState = {
   view: ViewMode

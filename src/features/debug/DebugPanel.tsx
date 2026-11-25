@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from 'react'
 import { AnimatePresence, motion, useReducedMotion } from 'motion/react'
 import { MAX_STEERING_DEG } from '../vehicle-scene/vehicle-motion'
-import { DEMO_SCENARIOS, type DemoScenario } from '../drive-status/demo-scenarios'
-import { useDemo } from '../../stores/demo'
+import { DEMO_SCENARIOS, type DemoScenario } from './demo-scenarios'
+import { useDemo } from './demo-store'
 
 export function DebugPanel() {
   const [open, setOpen] = useState(false)
@@ -59,7 +59,7 @@ export function DebugPanel() {
             </header>
             <div className="debug-section">
               <h3>화면 상태</h3>
-              <div className="view-switch" role="group" aria-label="데모 화면 선택">
+              <div className="view-switch" role="group" aria-label="기어 선택">
                 <button type="button" aria-pressed={view === 'park'} onClick={() => setView('park')}>주차 P</button>
                 <button type="button" aria-pressed={view === 'reverse'} onClick={() => setView('reverse')}>후진 R</button>
                 <button type="button" aria-pressed={view === 'neutral'} onClick={() => setView('neutral')}>중립 N</button>
@@ -92,7 +92,7 @@ export function DebugPanel() {
               <select id="drive-scenario" value={scenario} onChange={(event) => setScenario(event.target.value as DemoScenario)}>
                 {Object.entries(DEMO_SCENARIOS).map(([key, item]) => <option key={key} value={key}>{item.label}</option>)}
               </select>
-              <p className="scenario-note">선택하면 D로 전환합니다. 속도·RPM·전류 예시로 추정하며, 감속 예시는 속도가 서서히 줄어듭니다. 전류는 +방전/−충전을 가정한 목업입니다.</p>
+              <p className="scenario-note">선택하면 D로 전환합니다. 속도·RPM·전류 예시로 추정하며, 감속 예시는 속도가 서서히 줄어듭니다. 전류는 +방전/−충전을 가정합니다.</p>
             </div>
             <p className="debug-note">점선은 상대적인 조향 가이드이며 실제 주차 궤적이 아닙니다.</p>
           </motion.aside>

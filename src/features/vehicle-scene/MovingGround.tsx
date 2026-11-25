@@ -1,8 +1,8 @@
+import type { ViewMode } from './camera-transition'
 import { useMemo, useRef } from 'react'
 import { useFrame } from '@react-three/fiber'
 import { ShaderMaterial, Vector2 } from 'three'
 import { useReducedMotion } from 'motion/react'
-import type { ViewMode } from '../../stores/demo'
 import { advanceGroundPose, groundVelocity } from './ground-motion'
 import { REAR_AXLE_Z, steeringCurvature } from './vehicle-motion'
 

@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import { DEMO_SCENARIOS, demoSnapshot, demoActivity, type DemoScenario } from './demo-scenarios'
-import { DriveStatusMachine, type Status } from './state-machine'
+import { DriveStatusMachine, type Status } from '../drive-status/state-machine'
 const expected: Record<DemoScenario, Status> = {
   observed: 'engine', engineOffLoad: 'ev', engineLoad: 'hybrid', engineLowLoad: 'engine', lowLoad: 'coast',
   slowingCharge: 'regen', slowingLowLoad: 'decelerating', engineCharge: 'chargingMoving', stoppedCharge: 'charging',

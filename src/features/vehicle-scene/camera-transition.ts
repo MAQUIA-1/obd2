@@ -1,5 +1,5 @@
 import { Camera, Euler, Matrix4, Quaternion, Vector3 } from 'three'
-import type { ViewMode } from '../../stores/demo'
+export type ViewMode = 'park' | 'reverse' | 'neutral' | 'drive'
 
 // Small screen-left aim offset balances the silhouette in the diagonal park view.
 const PARK_TARGET = new Vector3(0.16, 0.45, -0.11)

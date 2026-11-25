@@ -5,11 +5,10 @@ import { ContactShadows, Line, Outlines, PerspectiveCamera, useGLTF } from '@rea
 import { Mesh, Quaternion, Vector3 } from 'three'
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js'
 import modelUrl from '../../../design/models/sonata-lf/sonata15.glb?url'
-import type { ViewMode } from '../../stores/demo'
 import { steeringGuide } from './steering-guide'
 import { displayMaterial } from './model-materials'
 import { MovingGround } from './MovingGround'
-import { cameraPose, CameraTransition } from './camera-transition'
+import { cameraPose, CameraTransition, type ViewMode } from './camera-transition'
 import { frontWheelAngle, MODEL_SCALE_X, MODEL_SCALE_Z } from './vehicle-motion'
 
 function Sonata({ steering }: { steering: number }) {

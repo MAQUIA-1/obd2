@@ -4,7 +4,7 @@
 
 ## 사용하기
 
-[대시보드 열기](https://maquia-1.github.io/obd2/) · 차량 없이도 데모를 볼 수 있습니다.
+[대시보드 열기](https://maquia-1.github.io/obd2/)
 
 1. Android Bluetooth 설정에서 Classic SPP를 지원하는 OBD 어댑터를 페어링합니다. 다른 앱이나 PC가 어댑터에 연결되어 있으면 해제합니다.
 2. Android Chrome에서 대시보드를 열고 **차량 연결**을 눌러 어댑터를 선택합니다.

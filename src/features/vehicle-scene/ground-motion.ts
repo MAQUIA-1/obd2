@@ -1,5 +1,5 @@
+import type { ViewMode } from './camera-transition'
 import { vehicleStep } from './vehicle-motion'
-import type { ViewMode } from '../../stores/demo'
 
 export const GROUND_PERIOD = 1.2
 

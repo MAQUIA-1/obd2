@@ -1,13 +1,11 @@
 import { useEffect, useState } from 'react'
-import { useDemo } from '../../stores/demo'
+import { useDemo } from './demo-store'
 import { DEMO_SCENARIOS, demoSnapshot } from './demo-scenarios'
-import { DriveStatusMachine, LABELS, type Result } from './state-machine'
+import { DriveStatusMachine, type Status } from '../drive-status/state-machine'
 
-// Dedicated synthetic feed: the application has no live vehicle transport yet.
-export function useDemoDriveStatus(enabled: boolean) {
-  const [result, setResult] = useState<Pick<Result, 'status' | 'inferred'>>({ status: 'waiting', inferred: false })
+export function useDemoDriveStatus() {
+  const [status, setStatus] = useState<Status>('waiting')
   useEffect(() => {
-    if (!enabled) return
     const machine = new DriveStatusMachine()
     let nextSample = 0
     let input = useDemo.getState()
@@ -27,9 +25,7 @@ export function useDemoDriveStatus(enabled: boolean) {
         snapshot = demoSnapshot(input, now)
         nextSample = now + 1000
       }
-      const next = machine.update(snapshot, now)
-      setResult(previous => previous.status === next.status && previous.inferred === next.inferred
-        ? previous : { status: next.status, inferred: next.inferred })
+      setStatus(machine.update(snapshot, now).status)
     }
     evaluate(true)
     // A repaint is not a new sample: evaluate every 250ms, synthesize a packet every second.
@@ -38,6 +34,6 @@ export function useDemoDriveStatus(enabled: boolean) {
       if (state.view !== previous.view || state.speedKph !== previous.speedKph || state.scenario !== previous.scenario) evaluate(true)
     })
     return () => { window.clearInterval(timer); unsubscribe() }
-  }, [enabled])
-  return { ...result, label: LABELS[result.status] }
+  }, [])
+  return status
 }
