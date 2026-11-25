@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { DriveStatusMachine, type Snapshot, type Status } from '../drive-status/state-machine'
 import { smoothFuelPct } from './fuel-level'
 import { pollVehicle, SPP } from './session'
-import type { Readings } from './protocol'
+import { FAST_READING_MAX_AGE_MS, type Readings } from './protocol'
 
 type Samples = { [K in keyof Readings]?: { value: Readings[K]; at: number; verified: true } }
 type Connection = 'idle' | 'selecting' | 'connecting' | 'connected' | 'closing' | 'disconnected' | 'error'
@@ -85,7 +85,7 @@ export function useVehicle() {
 
   function read<K extends keyof Readings>(key: K): Readings[K] | undefined {
     const sample = state.samples[key]
-    if (sample && state.now - sample.at <= (slow.has(key) ? SLOW_READING_MAX_AGE_MS : 3000)) return sample.value
+    if (sample && state.now - sample.at <= (slow.has(key) ? SLOW_READING_MAX_AGE_MS : FAST_READING_MAX_AGE_MS)) return sample.value
   }
 
   return {

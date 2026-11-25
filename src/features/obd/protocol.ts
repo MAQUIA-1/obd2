@@ -1,3 +1,5 @@
+export const FAST_READING_MAX_AGE_MS = 3_000
+
 export type Gear = 'P' | 'R' | 'N' | 'D' | 'M'
 
 export type Readings = {

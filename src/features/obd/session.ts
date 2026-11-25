@@ -1,3 +1,4 @@
+import { createPollSchedule } from './poll-schedule'
 import { decodeResponse, tasks, type Readings } from './protocol'
 
 export const SPP = '00001101-0000-1000-8000-00805f9b34fb'
@@ -60,13 +61,14 @@ export async function pollVehicle(
     }
 
     for (const text of setup) await command(text, true)
-    const schedule = (Object.keys(tasks) as Array<keyof typeof tasks>).map(name => ({ name, due: 0 }))
+    const schedule = createPollSchedule()
     let header: string | undefined
     let lastRead = performance.now()
     while (true) {
       session.throwIfAborted()
-      const next = schedule.reduce((earliest, item) => item.due < earliest.due ? item : earliest)
-      const delay = next.due - performance.now()
+      const at = performance.now()
+      const next = schedule.next(at)
+      const delay = next.due - at
       if (delay > 0) {
         let timer: ReturnType<typeof setTimeout> | undefined
         try {
@@ -74,6 +76,7 @@ export async function pollVehicle(
         } finally {
           clearTimeout(timer)
         }
+        continue
       }
       const task = tasks[next.name]
       if (header !== task.tx) {
@@ -82,14 +85,14 @@ export async function pollVehicle(
       }
       const response = await command(task.cmd)
       const now = performance.now()
-      next.due = now + task.interval
-      let values: Partial<Readings>
+      let values: Partial<Readings> | undefined
       try {
         values = decodeResponse(next.name, response)
       } catch {
         if (now - lastRead > 8000) throw new Error('차량 응답 없음. 차량 전원과 어댑터를 확인하세요.')
-        continue
       }
+      schedule.complete(next, now, values?.gear)
+      if (!values) continue
       lastRead = now
       onReadings(values, now)
     }
