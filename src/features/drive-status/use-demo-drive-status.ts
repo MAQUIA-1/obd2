@@ -4,9 +4,10 @@ import { DEMO_SCENARIOS, demoSnapshot } from './demo-scenarios'
 import { DriveStatusMachine, LABELS, type Result } from './state-machine'
 
 // Dedicated synthetic feed: the application has no live vehicle transport yet.
-export function useDemoDriveStatus() {
+export function useDemoDriveStatus(enabled: boolean) {
   const [result, setResult] = useState<Pick<Result, 'status' | 'inferred'>>({ status: 'waiting', inferred: false })
   useEffect(() => {
+    if (!enabled) return
     const machine = new DriveStatusMachine()
     let nextSample = 0
     let input = useDemo.getState()
@@ -37,6 +38,6 @@ export function useDemoDriveStatus() {
       if (state.view !== previous.view || state.speedKph !== previous.speedKph || state.scenario !== previous.scenario) evaluate(true)
     })
     return () => { window.clearInterval(timer); unsubscribe() }
-  }, [])
+  }, [enabled])
   return { ...result, label: LABELS[result.status] }
 }

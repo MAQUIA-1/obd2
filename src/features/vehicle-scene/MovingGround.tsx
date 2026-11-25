@@ -2,20 +2,19 @@ import { useMemo, useRef } from 'react'
 import { useFrame } from '@react-three/fiber'
 import { ShaderMaterial, Vector2 } from 'three'
 import { useReducedMotion } from 'motion/react'
-import { useDemo } from '../../stores/demo'
+import type { ViewMode } from '../../stores/demo'
 import { advanceGroundPose, groundVelocity } from './ground-motion'
 import { REAR_AXLE_Z, steeringCurvature } from './vehicle-motion'
 
-export function MovingGround() {
+export function MovingGround({ view, speed, steering }: { view: ViewMode; speed: number; steering: number }) {
   const material = useRef<ShaderMaterial>(null)
   const reducedMotion = useReducedMotion()
   const pose = useRef({ x: 0, z: 0, heading: 0 })
   const uniforms = useMemo(() => ({ offset: { value: new Vector2() }, heading: { value: 0 }, intensity: { value: 0.20 }, rearAxle: { value: REAR_AXLE_Z }, forwardView: { value: 0 } }), [])
   useFrame((_, delta) => {
-    const { speedKph, view, steeringDeg } = useDemo.getState()
-    const velocity = reducedMotion ? 0 : groundVelocity(speedKph, view)
+    const velocity = reducedMotion ? 0 : groundVelocity(speed, view)
     if (material.current) {
-      pose.current = advanceGroundPose(pose.current, velocity, steeringCurvature(steeringDeg), delta)
+      pose.current = advanceGroundPose(pose.current, velocity, steeringCurvature(steering), delta)
       material.current.uniforms.offset.value.set(pose.current.x, pose.current.z)
       material.current.uniforms.heading.value = pose.current.heading
       const forwardView = material.current.uniforms.forwardView

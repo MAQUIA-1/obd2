@@ -5,14 +5,14 @@ import { ContactShadows, Line, Outlines, PerspectiveCamera, useGLTF } from '@rea
 import { Mesh, Quaternion, Vector3 } from 'three'
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js'
 import modelUrl from '../../../design/models/sonata-lf/sonata15.glb?url'
-import { useDemo } from '../../stores/demo'
+import type { ViewMode } from '../../stores/demo'
 import { steeringGuide } from './steering-guide'
 import { displayMaterial } from './model-materials'
 import { MovingGround } from './MovingGround'
 import { cameraPose, CameraTransition } from './camera-transition'
 import { frontWheelAngle, MODEL_SCALE_X, MODEL_SCALE_Z } from './vehicle-motion'
 
-function Sonata() {
+function Sonata({ steering }: { steering: number }) {
   const { scene } = useGLTF(modelUrl)
   const model = useMemo(() => {
     const copy = scene.clone(true)
@@ -45,7 +45,6 @@ function Sonata() {
   const rotation = useMemo(() => new Quaternion(), [])
   const up = useMemo(() => new Vector3(0, 1, 0), [])
   useFrame(() => {
-    const steering = useDemo.getState().steeringDeg
     for (const { wheel, rest } of wheels) {
       const angle = frontWheelAngle(steering, wheel.position.x < 0 ? -1 : 1)
       wheel.quaternion.copy(rest).premultiply(rotation.setFromAxisAngle(up, -angle))
@@ -66,8 +65,7 @@ function Sonata() {
   )
 }
 
-function CameraRig() {
-  const view = useDemo((state) => state.view)
+function CameraRig({ view }: { view: ViewMode }) {
   const reduceMotion = useReducedMotion()
   const { camera, gl } = useThree()
   const controlsRef = useRef<OrbitControls | null>(null)
@@ -114,12 +112,9 @@ function CameraRig() {
   return null
 }
 
-function Guide() {
-  const angle = useDemo((state) => state.steeringDeg)
-  const view = useDemo((state) => state.view)
+function Guide({ angle }: { angle: number }) {
   const left = useMemo(() => steeringGuide(angle, -1), [angle])
   const right = useMemo(() => steeringGuide(angle, 1), [angle])
-  if (view !== 'reverse') return null
   return (
     <group>
       <Line points={left} color="#8b959f" lineWidth={1.4} dashed dashSize={0.17} gapSize={0.14} />
@@ -128,7 +123,7 @@ function Guide() {
   )
 }
 
-export default function VehicleScene() {
+export default function VehicleScene({ view, speed, steering }: { view: ViewMode; speed?: number; steering?: number }) {
   return (
     <Canvas
       dpr={[1, 1.5]}
@@ -138,17 +133,17 @@ export default function VehicleScene() {
     >
       <color attach="background" args={['#ffffff']} />
       <PerspectiveCamera makeDefault position={[-5, 3.6, -7]} fov={35} near={0.1} far={100} />
-      <CameraRig />
+      <CameraRig view={view} />
       <ambientLight intensity={1.6} />
       <directionalLight position={[-3, 8, -4]} intensity={1.8} />
       <directionalLight position={[4, 5, 3]} intensity={0.9} />
       <Suspense fallback={null}>
-        <Sonata />
+        <Sonata steering={steering ?? 0} />
         <ContactShadows position={[0, -0.015, 0]} opacity={0.14} scale={8}
           blur={4} far={2} resolution={256} frames={1} color="#6e747a" />
       </Suspense>
-      <MovingGround />
-      <Guide />
+      <MovingGround view={view} speed={speed ?? 0} steering={steering ?? 0} />
+      {view === 'reverse' && steering !== undefined && <Guide angle={steering} />}
     </Canvas>
   )
 }
