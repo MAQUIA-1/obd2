@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { DriveStatusMachine, type Snapshot, type Status } from '../drive-status/state-machine'
+import { smoothFuelPct } from './fuel-level'
 import { pollVehicle, SPP } from './session'
 import type { Readings } from './protocol'
 
@@ -8,6 +9,7 @@ type Connection = 'idle' | 'selecting' | 'connecting' | 'connected' | 'closing' 
 type VehicleState = { phase: Connection; message: string; samples: Samples; now: number; status: Status }
 
 const initial: VehicleState = { phase: 'idle', message: '차량 미연결', samples: {}, now: 0, status: 'waiting' }
+const SLOW_READING_MAX_AGE_MS = 25_000
 const slow = new Set<keyof Readings>(['fuelPct', 'coolantTempC', 'controlVoltageV', 'outsideTempC'])
 const notes = {
   selecting: '페어링한 OBD 어댑터를 선택하세요.',
@@ -51,7 +53,12 @@ export function useVehicle() {
       signal.throwIfAborted()
       setState({ ...initial, phase: 'connecting', message: notes.connecting })
       await pollVehicle(port, signal, (values, at) => {
-        samples = { ...samples, ...Object.fromEntries(Object.entries(values).map(([key, value]) =>
+        const { fuelPct } = values
+        const filtered = fuelPct === undefined ? values : {
+          ...values,
+          fuelPct: smoothFuelPct(fuelPct, at, samples.fuelPct, SLOW_READING_MAX_AGE_MS),
+        }
+        samples = { ...samples, ...Object.fromEntries(Object.entries(filtered).map(([key, value]) =>
           [key, { value, at, verified: true }])) }
         update(at)
         ticker ??= setInterval(() => update(performance.now()), 400)
@@ -78,7 +85,7 @@ export function useVehicle() {
 
   function read<K extends keyof Readings>(key: K): Readings[K] | undefined {
     const sample = state.samples[key]
-    if (sample && state.now - sample.at <= (slow.has(key) ? 25000 : 3000)) return sample.value
+    if (sample && state.now - sample.at <= (slow.has(key) ? SLOW_READING_MAX_AGE_MS : 3000)) return sample.value
   }
 
   return {
