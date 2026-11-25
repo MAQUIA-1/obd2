@@ -111,18 +111,19 @@ function CameraRig({ view }: { view: ViewMode }) {
   return null
 }
 
-function Guide({ angle }: { angle: number }) {
+function Guide({ angle, night }: { angle: number; night: boolean }) {
+  const color = night ? '#a8bfd3' : '#8b959f'
   const left = useMemo(() => steeringGuide(angle, -1), [angle])
   const right = useMemo(() => steeringGuide(angle, 1), [angle])
   return (
     <group>
-      <Line points={left} color="#8b959f" lineWidth={1.4} dashed dashSize={0.17} gapSize={0.14} />
-      <Line points={right} color="#8b959f" lineWidth={1.4} dashed dashSize={0.17} gapSize={0.14} />
+      <Line points={left} color={color} lineWidth={1.4} dashed dashSize={0.17} gapSize={0.14} />
+      <Line points={right} color={color} lineWidth={1.4} dashed dashSize={0.17} gapSize={0.14} />
     </group>
   )
 }
 
-export default function VehicleScene({ view, speed, steering }: { view: ViewMode; speed?: number; steering?: number }) {
+export default function VehicleScene({ view, speed, steering, night }: { view: ViewMode; speed?: number; steering?: number; night: boolean }) {
   return (
     <Canvas
       dpr={[1, 1.5]}
@@ -130,19 +131,19 @@ export default function VehicleScene({ view, speed, steering }: { view: ViewMode
       fallback={<p className="scene-message">이 브라우저에서 3D 화면을 사용할 수 없습니다.</p>}
       aria-label="쏘나타 차량과 조향 방향 가이드"
     >
-      <color attach="background" args={['#ffffff']} />
+      <color attach="background" args={[night ? '#14191f' : '#ffffff']} />
       <PerspectiveCamera makeDefault position={[-5, 3.6, -7]} fov={35} near={0.1} far={100} />
       <CameraRig view={view} />
-      <ambientLight intensity={1.6} />
-      <directionalLight position={[-3, 8, -4]} intensity={1.8} />
-      <directionalLight position={[4, 5, 3]} intensity={0.9} />
+      <ambientLight intensity={night ? 0.75 : 1.6} />
+      <directionalLight position={[-3, 8, -4]} intensity={night ? 0.9 : 1.8} />
+      <directionalLight position={[4, 5, 3]} intensity={night ? 0.45 : 0.9} />
       <Suspense fallback={null}>
         <Sonata steering={steering ?? 0} />
         <ContactShadows position={[0, -0.015, 0]} opacity={0.14} scale={8}
           blur={4} far={2} resolution={256} frames={1} color="#6e747a" />
       </Suspense>
       <MovingGround view={view} speed={speed ?? 0} steering={steering ?? 0} />
-      {view === 'reverse' && steering !== undefined && <Guide angle={steering} />}
+      {view === 'reverse' && steering !== undefined && <Guide angle={steering} night={night} />}
     </Canvas>
   )
 }

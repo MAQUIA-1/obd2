@@ -8,7 +8,7 @@ vi.mock('../features/vehicle-scene/VehicleScene', () => ({ default: () => null }
 
 function renderDashboard(gear: Gear | undefined, status: Status, batteryCurrentA?: number) {
   const readings: Partial<Readings> = { gear, batteryCurrentA }
-  return renderToStaticMarkup(<Dashboard read={key => readings[key]} status={status} footer={null} />)
+  return renderToStaticMarkup(<Dashboard read={key => readings[key]} status={status} footer={null} night={false} onToggleTheme={() => {}} />)
 }
 
 describe('central drive mode display', () => {

@@ -5,23 +5,21 @@ import { Dashboard } from './Dashboard'
 const PreviewDashboard = import.meta.env.DEV
   ? lazy(() => import('../features/debug/PreviewDashboard'))
   : null
+const DebugPanel = import.meta.env.DEV
+  ? lazy(() => import('../features/debug/DebugPanel'))
+  : null
 
 export function App() {
   const vehicle = useVehicle()
   const [preview, setPreview] = useState(false)
+  const [night, setNight] = useState(false)
+  const theme = { night, onToggleTheme: () => setNight(current => !current) }
   const busy = vehicle.phase === 'selecting' || vehicle.phase === 'closing'
   const sessionOpen = vehicle.phase === 'connecting' || vehicle.phase === 'connected'
 
-  if (PreviewDashboard && preview) {
-    return (
-      <Suspense fallback={<Dashboard read={vehicle.read} status={vehicle.status} footer={null} />}>
-        <PreviewDashboard onExit={() => setPreview(false)} />
-      </Suspense>
-    )
-  }
-
-  return (
+  const liveDashboard = (
     <Dashboard
+      {...theme}
       read={vehicle.read}
       status={vehicle.status}
       footer={
@@ -30,9 +28,6 @@ export function App() {
             {vehicle.supported ? vehicle.message : '차량 연결은 Android Chrome의 HTTPS 페이지에서 사용할 수 있습니다.'}
           </span>
           <div className="connection-actions">
-            {PreviewDashboard && !busy && !sessionOpen && (
-              <button type="button" onClick={() => setPreview(true)}>화면 미리보기</button>
-            )}
             {sessionOpen ? (
               <button type="button" onClick={vehicle.disconnect}>연결 해제</button>
             ) : (
@@ -45,5 +40,22 @@ export function App() {
         </>
       }
     />
+  )
+
+  return (
+    <>
+      {PreviewDashboard && preview
+        ? (
+            <Suspense fallback={<Dashboard {...theme} read={vehicle.read} status={vehicle.status} footer={null} />}>
+              <PreviewDashboard {...theme} />
+            </Suspense>
+          )
+        : liveDashboard}
+      {DebugPanel && (
+        <Suspense fallback={null}>
+          <DebugPanel preview={preview} canStart={!busy && !sessionOpen} onTogglePreview={() => setPreview(active => !active)} />
+        </Suspense>
+      )}
+    </>
   )
 }

@@ -3,8 +3,15 @@ import { AnimatePresence, motion, useReducedMotion } from 'motion/react'
 import { MAX_STEERING_DEG } from '../vehicle-scene/vehicle-motion'
 import { DEMO_SCENARIOS, type DemoScenario } from './demo-scenarios'
 import { useDemo } from './demo-store'
+import './debug.css'
 
-export function DebugPanel() {
+type DebugPanelProps = {
+  preview: boolean
+  canStart: boolean
+  onTogglePreview: () => void
+}
+
+export default function DebugPanel({ preview, canStart, onTogglePreview }: DebugPanelProps) {
   const [open, setOpen] = useState(false)
   const trigger = useRef<HTMLButtonElement>(null)
   const panel = useRef<HTMLElement>(null)
@@ -57,44 +64,52 @@ export function DebugPanel() {
               <div><h2 id="debug-heading">디버그</h2><p>실차 연결 없이 화면을 확인합니다.</p></div>
               <button type="button" className="debug-close" onClick={close} aria-label="디버그 닫기">×</button>
             </header>
-            <div className="debug-section">
-              <h3>화면 상태</h3>
-              <div className="view-switch" role="group" aria-label="기어 선택">
-                <button type="button" aria-pressed={view === 'park'} onClick={() => setView('park')}>주차 P</button>
-                <button type="button" aria-pressed={view === 'reverse'} onClick={() => setView('reverse')}>후진 R</button>
-                <button type="button" aria-pressed={view === 'neutral'} onClick={() => setView('neutral')}>중립 N</button>
-                <button type="button" aria-pressed={view === 'drive'} onClick={() => setView('drive')}>주행 D</button>
-              </div>
-            </div>
-            <div className="debug-section">
-              <div className="steering-heading">
-                <label htmlFor="steering">조향각</label>
-                <output htmlFor="steering">{angle > 0 ? '+' : ''}{angle.toFixed(0)}<span>°</span></output>
-                <button type="button" className="reset-button" onClick={() => setSteering(0)}>중앙</button>
-              </div>
-              <input id="steering" type="range" min={-MAX_STEERING_DEG} max={MAX_STEERING_DEG} step="0.1" value={angle}
-                onChange={(event) => setSteering(Number(event.target.value))} aria-valuetext={`${angle}도`} />
-              <div className="range-labels"><span>왼쪽</span><span>오른쪽</span></div>
-            </div>
-            <div className="debug-section">
-              <div className="steering-heading">
-                <label htmlFor="demo-speed">속도</label>
-                <output htmlFor="demo-speed">{speed.toFixed(0)}<span>km/h</span></output>
-                <button type="button" className="reset-button" onClick={() => setSpeed(0)}>정지</button>
-              </div>
-              <input id="demo-speed" type="range" min="0" max="120" step="1" value={speed}
-                disabled={view === 'park'} aria-valuetext={`${speed}킬로미터 매 시`}
-                onChange={(event) => setSpeed(Number(event.target.value))} />
-              {view === 'park' && <p className="debug-note">속도 변경은 R/N/D에서 가능합니다.</p>}
-            </div>
-            <div className="debug-section">
-              <label className="scenario-label" htmlFor="drive-scenario">주행 입력 예시</label>
-              <select id="drive-scenario" value={scenario} onChange={(event) => setScenario(event.target.value as DemoScenario)}>
-                {Object.entries(DEMO_SCENARIOS).map(([key, item]) => <option key={key} value={key}>{item.label}</option>)}
-              </select>
-              <p className="scenario-note">선택하면 D로 전환합니다. 속도·RPM·전류 예시로 추정하며, 감속 예시는 속도가 서서히 줄어듭니다. 전류는 +방전/−충전을 가정합니다.</p>
-            </div>
-            <p className="debug-note">점선은 상대적인 조향 가이드이며 실제 주차 궤적이 아닙니다.</p>
+            <button type="button" className="debug-preview-toggle" disabled={!preview && !canStart}
+              onClick={() => { onTogglePreview(); close() }}>
+              {preview ? '미리보기 종료' : '화면 미리보기'}
+            </button>
+            {preview && (
+              <>
+                <div className="debug-section">
+                  <h3>화면 상태</h3>
+                  <div className="view-switch" role="group" aria-label="기어 선택">
+                    <button type="button" aria-pressed={view === 'park'} onClick={() => setView('park')}>주차 P</button>
+                    <button type="button" aria-pressed={view === 'reverse'} onClick={() => setView('reverse')}>후진 R</button>
+                    <button type="button" aria-pressed={view === 'neutral'} onClick={() => setView('neutral')}>중립 N</button>
+                    <button type="button" aria-pressed={view === 'drive'} onClick={() => setView('drive')}>주행 D</button>
+                  </div>
+                </div>
+                <div className="debug-section">
+                  <div className="steering-heading">
+                    <label htmlFor="steering">조향각</label>
+                    <output htmlFor="steering">{angle > 0 ? '+' : ''}{angle.toFixed(0)}<span>°</span></output>
+                    <button type="button" className="reset-button" onClick={() => setSteering(0)}>중앙</button>
+                  </div>
+                  <input id="steering" type="range" min={-MAX_STEERING_DEG} max={MAX_STEERING_DEG} step="0.1" value={angle}
+                    onChange={(event) => setSteering(Number(event.target.value))} aria-valuetext={`${angle}도`} />
+                  <div className="range-labels"><span>왼쪽</span><span>오른쪽</span></div>
+                </div>
+                <div className="debug-section">
+                  <div className="steering-heading">
+                    <label htmlFor="demo-speed">속도</label>
+                    <output htmlFor="demo-speed">{speed.toFixed(0)}<span>km/h</span></output>
+                    <button type="button" className="reset-button" onClick={() => setSpeed(0)}>정지</button>
+                  </div>
+                  <input id="demo-speed" type="range" min="0" max="120" step="1" value={speed}
+                    disabled={view === 'park'} aria-valuetext={`${speed}킬로미터 매 시`}
+                    onChange={(event) => setSpeed(Number(event.target.value))} />
+                  {view === 'park' && <p className="debug-note">속도 변경은 R/N/D에서 가능합니다.</p>}
+                </div>
+                <div className="debug-section">
+                  <label className="scenario-label" htmlFor="drive-scenario">주행 입력 예시</label>
+                  <select id="drive-scenario" value={scenario} onChange={(event) => setScenario(event.target.value as DemoScenario)}>
+                    {Object.entries(DEMO_SCENARIOS).map(([key, item]) => <option key={key} value={key}>{item.label}</option>)}
+                  </select>
+                  <p className="scenario-note">선택하면 D로 전환합니다. 속도·RPM·전류 예시로 추정하며, 감속 예시는 속도가 서서히 줄어듭니다. 전류는 +방전/−충전을 가정합니다.</p>
+                </div>
+                <p className="debug-note">점선은 상대적인 조향 가이드이며 실제 주차 궤적이 아닙니다.</p>
+              </>
+            )}
           </motion.aside>
         )}
       </AnimatePresence>
