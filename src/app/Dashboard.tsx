@@ -5,6 +5,7 @@ import type { ViewMode } from '../features/vehicle-scene/camera-transition'
 import { SceneBoundary } from '../features/vehicle-scene/SceneBoundary'
 
 const VehicleScene = lazy(() => import('../features/vehicle-scene/VehicleScene'))
+const driveModeStatuses = new Set<Status>(['ev', 'engine', 'hybrid', 'coast'])
 const modes: Record<Gear, ViewMode> = { P: 'park', R: 'reverse', N: 'neutral', D: 'drive', M: 'drive' }
 const format = (value: number | undefined, digits = 0) => value?.toFixed(digits) ?? '—'
 
@@ -40,7 +41,7 @@ export function Dashboard({ read, status, footer, tools }: DashboardProps) {
               aria-current={item === gear ? 'true' : undefined}>{item}</span>
           ))}
         </div>
-        {driving && (
+        {gear === 'D' && driveModeStatuses.has(status) && (
           <p className="drive-status" role="status" data-state={status}>{LABELS[status]}</p>
         )}
         <div className="primary-readout">
